@@ -15,6 +15,7 @@ const breedsUrl = 'breeds';
 const searchImagesUrl = 'images/search';
 
 const fetchBreeds = () => {
+  select.style.display = 'none';
   axios
     .get(`${apiUrl}${breedsUrl}`)
     .then(response => {
@@ -23,11 +24,11 @@ const fetchBreeds = () => {
           (select.innerHTML += `<option value="${item.id}">${item.name}</option>`)
       );
       new SlimSelect({
-        select: '#breed-select',
+        select: select,
       });
+      select.style.display = 'block';
     })
     .catch(er => {
-      select.style.display = 'none';
       Notify.failure(`Oops! Something went wrong! Try reloading the page!`);
     })
     .finally(() => (loader.style.display = 'none'));

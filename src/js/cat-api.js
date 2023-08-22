@@ -15,8 +15,6 @@ const fetchCatByBreed = (
 ) => {
   catInfo.innerHTML = '';
   catInfo.setAttribute('hidden', '');
-  const select = document.querySelector('.ss-main');
-  select.style.display = 'none';
   const searchParams = new URLSearchParams({
     breed_ids: breedId,
   });
@@ -24,7 +22,6 @@ const fetchCatByBreed = (
     .get(`${apiUrl}${searchImagesUrl}?${searchParams}`)
     .then(response => {
       renderInfo(response.data[0], catInfo);
-      select.style.display = 'flex';
     })
     .catch(() => {
       Notify.failure(`Oops! Something went wrong! Try reloading the page!`);
