@@ -8,7 +8,6 @@ axios.defaults.headers.common['x-api-key'] =
 
 const select = document.getElementById('breed-select');
 const loader = document.querySelector('.loader');
-const error = document.querySelector('.error');
 const catInfo = document.querySelector('.cat-info');
 
 const apiUrl = 'https://api.thecatapi.com/v1/';
@@ -37,15 +36,7 @@ const fetchBreeds = () => {
 select.addEventListener('change', () => {
   loader.style.display = 'inline-block';
   const breedId = select.value;
-  fetchCatByBreed(
-    breedId,
-    catInfo,
-    loader,
-    error,
-    axios,
-    apiUrl,
-    searchImagesUrl
-  );
+  fetchCatByBreed(breedId, catInfo, loader, axios, apiUrl, searchImagesUrl);
 });
 
 fetchBreeds();
